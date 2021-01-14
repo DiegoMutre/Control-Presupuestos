@@ -24,9 +24,12 @@ function App() {
   // Agrega un nuevo gasto
   useEffect(() => {
     if (crearGasto) {
+      if (restante < 1) {
+        alert("Se ha acabado el presupuesto");
+        return;
+      }
       guardarGastos([...gastos, gasto]);
       guardarCrearGasto(false);
-
       // Resta del restante la cantidad del gasto
       const presupuestoRestante = restante - gasto.cantidad;
       guardarRestante(presupuestoRestante);
@@ -50,6 +53,7 @@ function App() {
                 <Formulario
                   guardarGasto={guardarGasto}
                   guardarCrearGasto={guardarCrearGasto}
+                  restante={restante}
                 />
               </div>
               <div className="one-half column">

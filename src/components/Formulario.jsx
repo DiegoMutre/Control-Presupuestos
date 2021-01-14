@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import shortid from "shortid";
 import Error from "./Error";
 
-const Formulario = ({ guardarGasto, guardarCrearGasto }) => {
+const Formulario = ({ guardarGasto, guardarCrearGasto, restante }) => {
   // State para nombre y cantidad
   const [nombre, guardarNombre] = useState("");
   const [cantidad, guardarCantidad] = useState(0);
@@ -42,6 +42,7 @@ const Formulario = ({ guardarGasto, guardarCrearGasto }) => {
       {error ? (
         <Error mensaje="Ambos campos son obligatorios o presupuesto incorrecto" />
       ) : null}
+      {restante < 1 ? <Error mensaje="Se ha agotado el Presupuesto" /> : null}
       <div className="campo">
         <label>Nombre Gasto</label>
         <input

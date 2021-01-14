@@ -6,6 +6,7 @@ const Pregunta = ({
   guardarPresupuesto,
   guardarRestante,
   actualizarPregunta,
+  restante,
 }) => {
   // Definir el state
   const [cantidad, guardarCantidad] = useState(0);
